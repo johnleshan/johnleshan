@@ -11,9 +11,14 @@
 
 <h2 align="center">🧭 What I Do</h2>
 
-| 🤖 Applied AI & ML | 🧱 Full-Stack Products | ⚙️ Automation & RPA |
-|:--|:--|:--|
-| RAG assistants, semantic search, document intelligence and forecasting — evaluated honestly, then shipped. | React and Next.js front ends, Python and Node APIs, auth, Postgres, Docker and deployment that holds up. | Playwright workflows, WhatsApp, SMS and USSD channels — removing the repetitive work in between. |
+**🤖 Applied AI & ML**<br/>
+<sub>RAG assistants, semantic search, document intelligence and forecasting — evaluated honestly, then shipped.</sub>
+
+**🧱 Full-Stack Products**<br/>
+<sub>React and Next.js front ends, Python and Node APIs, auth, Postgres, Docker and deployment that holds up.</sub>
+
+**⚙️ Automation & RPA**<br/>
+<sub>Playwright workflows, WhatsApp, SMS and USSD channels — removing the repetitive work in between.</sub>
 
 <h2 align="center">👋 About Me</h2>
 
@@ -70,40 +75,44 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
 
 <h2 align="center">🚀 Featured Projects</h2>
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>🧾 <a href="https://github.com/johnleshan/TrackSimply">TrackSimply</a></h3>
-      <p>AI bookkeeping and business analytics for SMEs — transactions, debts, budgets, inventory and fleet in one calm dashboard. The assistant previews every change before it writes.</p>
-      <p><sub><b>React · Vite · PostgreSQL · Supabase · Vercel</b></sub></p>
-      <p><a href="https://track-simply.vercel.app">Live app</a> · <a href="https://github.com/johnleshan/TrackSimply">Source</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🔍 <a href="https://github.com/johnleshan/Plagiarism-Detector-Using-Sentence-Transformers">Plagiarism Detector</a></h3>
-      <p>Semantic plagiarism detection with sentence embeddings. Catches paraphrasing, not just copy-paste, across 100+ languages — with a desktop GUI and quantitative similarity scores.</p>
-      <p><sub><b>Python · Sentence Transformers · PyTorch · Tkinter</b></sub></p>
-      <p><a href="https://github.com/johnleshan/Plagiarism-Detector-Using-Sentence-Transformers">Source</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>📦 <a href="https://github.com/johnleshan/Warehouse-Management">Warehouse Management</a></h3>
-      <p>An AI warehouse control tower: inventory, receiving and outbound, worker efficiency, burn-rate reports, reorder points and stockout forecasting.</p>
-      <p><sub><b>Next.js · TypeScript · shadcn/ui · Recharts · MongoDB</b></sub></p>
-      <p><a href="https://warehouse-management-zeta.vercel.app">Live app</a> · <a href="https://github.com/johnleshan/Warehouse-Management">Source</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>⚡ <a href="https://github.com/johnleshan/SwiftChat">SwiftChat</a></h3>
-      <p>Real-time messaging with AI-generated replies and a focus mode that filters conversation noise. Built for speed, dark mode and mobile from day one.</p>
-      <p><sub><b>Next.js · TypeScript · Genkit · Firebase · shadcn/ui</b></sub></p>
-      <p><a href="https://swift-chat-kappa.vercel.app">Live app</a> · <a href="https://github.com/johnleshan/SwiftChat">Source</a></p>
-    </td>
-  </tr>
-</table>
+<h3>🧾 <a href="https://github.com/johnleshan/TrackSimply">TrackSimply</a></h3>
 
-<p align="center">
-  <sub><b>Also worth a look:</b> <a href="https://github.com/johnleshan/Apex-News-App">Apex News App</a> (Android · Kotlin · clean architecture) &nbsp;·&nbsp; <a href="https://github.com/johnleshan/ChickenTrack">ChickenTrack</a> (poultry operations · React + Postgres) &nbsp;·&nbsp; <a href="https://github.com/johnleshan/Son-Designs">Son-Designs</a> (editorial Next.js site) &nbsp;·&nbsp; <a href="https://github.com/johnleshan/tokenator">tokenator</a> (Gemini context analyzer)</sub>
-</p>
+AI bookkeeping and business analytics for SMEs — transactions, debts, budgets, inventory and fleet in one calm dashboard. The assistant previews every change before it writes.
+
+<sub><b>React · Vite · PostgreSQL · Supabase · Vercel</b></sub>
+
+[Live app](https://track-simply.vercel.app) · [Source](https://github.com/johnleshan/TrackSimply)
+
+<h3>🔍 <a href="https://github.com/johnleshan/Plagiarism-Detector-Using-Sentence-Transformers">Plagiarism Detector</a></h3>
+
+Semantic plagiarism detection with sentence embeddings. Catches paraphrasing, not just copy-paste, across 100+ languages — with a desktop GUI and quantitative similarity scores.
+
+<sub><b>Python · Sentence Transformers · PyTorch · Tkinter</b></sub>
+
+[Source](https://github.com/johnleshan/Plagiarism-Detector-Using-Sentence-Transformers)
+
+<h3>📦 <a href="https://github.com/johnleshan/Warehouse-Management">Warehouse Management</a></h3>
+
+An AI warehouse control tower: inventory, receiving and outbound, worker efficiency, burn-rate reports, reorder points and stockout forecasting.
+
+<sub><b>Next.js · TypeScript · shadcn/ui · Recharts · MongoDB</b></sub>
+
+[Live app](https://warehouse-management-zeta.vercel.app) · [Source](https://github.com/johnleshan/Warehouse-Management)
+
+<h3>⚡ <a href="https://github.com/johnleshan/SwiftChat">SwiftChat</a></h3>
+
+Real-time messaging with AI-generated replies and a focus mode that filters conversation noise. Built for speed, dark mode and mobile from day one.
+
+<sub><b>Next.js · TypeScript · Genkit · Firebase · shadcn/ui</b></sub>
+
+[Live app](https://swift-chat-kappa.vercel.app) · [Source](https://github.com/johnleshan/SwiftChat)
+
+**Also worth a look**
+
+- **[Apex News App](https://github.com/johnleshan/Apex-News-App)** — Android, Kotlin, clean architecture
+- **[ChickenTrack](https://github.com/johnleshan/ChickenTrack)** — poultry operations, React + Postgres
+- **[Son-Designs](https://github.com/johnleshan/Son-Designs)** — editorial Next.js site
+- **[tokenator](https://github.com/johnleshan/tokenator)** — Gemini context-window analyzer
 
 <h2 align="center">🧪 Selected Results</h2>
 
@@ -124,12 +133,15 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
 <h2 align="center">📊 GitHub Activity</h2>
 
 <p align="center">
-  <img width="700" src="assets/stats.svg" alt="John Leshan's GitHub activity: 1,322 contributions in the last year, 31 public repositories, 22 stars and 24 languages" />
+  <img width="495" src="assets/stats.svg" alt="John Leshan's GitHub activity card" />
 </p>
 
 <p align="center">
-  <img height="180" src="https://streak-stats.demolab.com?user=johnleshan&hide_border=true&background=0D1117&border=30363D&stroke=22D3EE&ring=22D3EE&fire=818CF8&currStreakNum=FFFFFF&currStreakLabel=22D3EE&sideNums=FFFFFF&sideLabels=C9D1D9&dates=8B949E&excludeDaysLabel=8B949E" alt="GitHub streak stats" />
-  <img height="180" src="assets/languages.svg" alt="Top languages by bytes: JavaScript, TypeScript, Python, CSS and HTML" />
+  <img width="495" src="https://streak-stats.demolab.com?user=johnleshan&hide_border=true&background=0D1117&border=30363D&stroke=22D3EE&ring=22D3EE&fire=818CF8&currStreakNum=FFFFFF&currStreakLabel=22D3EE&sideNums=FFFFFF&sideLabels=C9D1D9&dates=8B949E&excludeDaysLabel=8B949E" alt="GitHub streak stats" />
+</p>
+
+<p align="center">
+  <img width="340" src="assets/languages.svg" alt="Top languages by bytes: JavaScript, TypeScript, Python, CSS and HTML" />
 </p>
 
 <p align="center"><sub>Activity card generated from the GitHub API. A large share of my recent work lives in private repositories.</sub></p>

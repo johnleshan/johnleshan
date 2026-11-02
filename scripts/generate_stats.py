@@ -102,86 +102,64 @@ def lerp_hex(start: str, end: str, t: float) -> str:
 
 def stats_card(user: dict, items: list[dict], contributions: dict, days: list[dict], lang_count: int) -> str:
     originals = [r for r in items if not r["fork"] and not r["archived"]]
+    public_all = [r for r in items if not r["private"]]
     public = [r for r in originals if not r["private"]]
     stars = sum(int(r.get("stargazers_count", 0)) for r in originals)
     total_year = sum(int(d["contributionCount"]) for d in days)
     private_year = int(contributions.get("restrictedContributionsCount", 0))
     updated = datetime.now(timezone.utc).strftime("%d %b %Y")
 
-    # 53 columns x 7 rows, oldest first. API returns Sunday-first weeks.
-    week_map: dict[str, int] = {d["date"]: int(d["contributionCount"]) for d in days}
-    ordered = sorted(week_map)
-    values = [week_map[d] for d in ordered]
-    peak = max(values) if values else 1
-    cols = 53
-    cell, gap = 5.0, 1.5
-    grid_w = cols * (cell + gap) - gap
-    grid_h = 7 * (cell + gap) - gap
-    x0, y0 = 700 - 30 - grid_w, 64
-    # keep the most recent 53*7 days, padded at the front
-    target = cols * 7
-    filled = (values + [0] * target)[-target:]
-    colors = ["#161B22", "#155E75", "#0891B2", "#22D3EE", "#A5F3FC"]
-    squares = []
-    for i, count in enumerate(filled):
-        col, row = divmod(i, 7)
-        if count <= 0:
-            level = 0
-        elif count <= 2:
-            level = 1
-        elif count <= 5:
-            level = 2
-        elif count <= 12:
-            level = 3
-        else:
-            level = 4
-        squares.append(
-            f'<rect x="{x0 + col * (cell + gap):.1f}" y="{y0 + row * (cell + gap):.1f}" '
-            f'width="{cell}" height="{cell}" rx="1" fill="{colors[level]}"/>'
-        )
-    legend = "".join(
-        f'<rect x="{x0 + 27 + i * 7}" y="133" width="5" height="5" rx="1" fill="{color}"/>'
-        for i, color in enumerate(colors)
-    )
+    # Monthly totals, last 12 months.
+    buckets: dict[str, int] = {}
+    for day in days:
+        key = day["date"][:7]
+        buckets[key] = buckets.get(key, 0) + int(day["contributionCount"])
+    months = sorted(buckets)[-12:]
+    monthly = [buckets[m] for m in months]
+    peak = max(monthly) if monthly else 1
+
+    chart_x, chart_y, chart_h = 250, 70, 62
+    bar_w, bar_gap = 12, 6
+    bars = []
+    labels = []
+    for i, (key, value) in enumerate(zip(months, monthly)):
+        x = chart_x + i * (bar_w + bar_gap)
+        h = max(2.0, chart_h * value / peak)
+        y = chart_y + chart_h - h
+        bars.append(f'<rect x="{x}" y="{chart_y}" width="{bar_w}" height="{chart_h}" rx="2" fill="#161B22"/>')
+        bars.append(f'<rect x="{x}" y="{y:.1f}" width="{bar_w}" height="{h:.1f}" rx="2" fill="#22D3EE"/>')
+        label = datetime.strptime(key + "-01", "%Y-%m-%d").strftime("%b")[0]
+        labels.append(f'<text x="{x + bar_w / 2:.1f}" y="{chart_y + chart_h + 13}" text-anchor="middle" font-size="7" fill="#6E7681">{label}</text>')
 
     metrics = [
-        (f"{len(public)}", "public repos"),
+        (f"{len(public_all)}", "public repos"),
         (f"{stars}", "stars earned"),
         (f"{lang_count}", "languages"),
     ]
     metric_svg = []
     for i, (value, label) in enumerate(metrics):
-        mx = 30 + i * 100
+        mx = 24 + i * 80
         metric_svg.append(
-            f'<text x="{mx}" y="160" font-size="22" font-weight="700" fill="#F0F6FC">{value}</text>'
-            f'<text x="{mx}" y="176" font-size="9.5" fill="#8B949E">{label}</text>'
+            f'<text x="{mx}" y="148" font-size="18" font-weight="700" fill="#F0F6FC">{value}</text>'
+            f'<text x="{mx}" y="162" font-size="8.5" fill="#8B949E">{label}</text>'
         )
 
-    if ordered:
-        first = datetime.strptime(ordered[0], "%Y-%m-%d").strftime("%b %Y")
-        last = datetime.strptime(ordered[-1], "%Y-%m-%d").strftime("%b %Y")
-        period = f"{first} — {last}"
-    else:
-        period = ""
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="700" height="200" viewBox="0 0 700 200" role="img" aria-labelledby="title desc">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195" role="img" aria-labelledby="title desc">
   <title id="title">{esc(user.get("name") or USER)} — GitHub at a glance</title>
-  <desc id="desc">{total_year:,} contributions in the last year, {len(public)} public repositories and {stars} stars.</desc>
-  <rect x="0.5" y="0.5" width="699" height="199" rx="10" fill="#0D1117" stroke="#30363D"/>
-  <circle cx="30" cy="31" r="3" fill="#22D3EE"/>
-  <text x="41" y="35" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" letter-spacing="2.2" fill="#8B949E">GITHUB AT A GLANCE</text>
-  <text x="30" y="92" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="#F0F6FC">{total_year:,}</text>
-  <text x="30" y="112" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8B949E">contributions · last 12 months</text>
-  <line x1="30" y1="130" x2="300" y2="130" stroke="#21262D"/>
+  <desc id="desc">{total_year:,} contributions in the last year, {len(public_all)} public repositories and {stars} stars.</desc>
+  <rect x="0.5" y="0.5" width="494" height="194" rx="10" fill="#0D1117" stroke="#30363D"/>
+  <circle cx="24" cy="30" r="3" fill="#22D3EE"/>
+  <text x="35" y="34" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9" letter-spacing="2.1" fill="#8B949E">GITHUB AT A GLANCE</text>
+  <text x="24" y="88" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="40" font-weight="700" fill="#F0F6FC">{total_year:,}</text>
+  <text x="24" y="106" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#8B949E">contributions · last 12 months</text>
+  <line x1="24" y1="120" x2="226" y2="120" stroke="#21262D"/>
   {"".join(metric_svg)}
-  <text x="{x0}" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9" letter-spacing="1.8" fill="#8B949E">CONTRIBUTION ACTIVITY</text>
-  {"".join(squares)}
-  <text x="{x0}" y="{y0 + grid_h + 15}" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9" fill="#6E7681">{period}</text>
-  <text x="670" y="{y0 + grid_h + 15}" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9" fill="#6E7681">Updated {updated}</text>
-  <text x="{x0}" y="140" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="8" fill="#6E7681">Less</text>
-  {legend}
-  <text x="{x0 + 65}" y="140" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="8" fill="#6E7681">More</text>
-  <text x="{x0}" y="172" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6E7681">Includes {private_year:,} contributions in private repositories.</text>
+  <line x1="240" y1="55" x2="240" y2="166" stroke="#21262D"/>
+  <text x="{chart_x}" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="8" letter-spacing="1.7" fill="#8B949E">CONTRIBUTIONS / MONTH</text>
+  {"".join(bars)}
+  {"".join(labels)}
+  <text x="24" y="181" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="8.5" fill="#6E7681">Includes {private_year:,} contributions in private repositories.</text>
+  <text x="471" y="181" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="8.5" fill="#6E7681">Updated {updated}</text>
 </svg>
 '''
 
