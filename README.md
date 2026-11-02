@@ -137,7 +137,7 @@ Real-time messaging with AI-generated replies and a focus mode that filters conv
 </p>
 
 <p align="center">
-  <img width="495" src="https://streak-stats.demolab.com?user=johnleshan&hide_border=true&background=0D1117&border=30363D&stroke=22D3EE&ring=22D3EE&fire=818CF8&currStreakNum=FFFFFF&currStreakLabel=22D3EE&sideNums=FFFFFF&sideLabels=C9D1D9&dates=8B949E&excludeDaysLabel=8B949E" alt="GitHub streak stats" />
+  <img width="495" src="assets/streak.svg" alt="Coding streak card" />
 </p>
 
 <p align="center">
