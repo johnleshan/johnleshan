@@ -3,7 +3,6 @@
 
 Cards are 700x200 SVGs in the same visual language as the hero banner:
   assets/stats.svg      overall activity + 12-month contribution chart
-  assets/streak.svg     coding streak + last-30-days strip
   assets/languages.svg  top languages by bytes across public original repos
 
 Run locally:  python scripts/generate_stats.py
@@ -162,65 +161,6 @@ def stats_card(user: dict, items: list[dict], collection: dict, days: list[dict]
 '''
 
 
-def streak_card(days: list[dict]) -> str:
-    counts = {d["date"]: int(d["contributionCount"]) for d in days}
-    ordered = sorted(counts)
-    seq = [counts[d] for d in ordered]
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-    end = len(seq) - 1
-    if seq and seq[-1] == 0 and ordered[-1] == today:
-        end -= 1
-    current = 0
-    while end >= 0 and seq[end] > 0:
-        current += 1
-        end -= 1
-
-    longest = run = 0
-    for value in seq:
-        run = run + 1 if value > 0 else 0
-        longest = max(longest, run)
-
-    total = sum(seq)
-    active = sum(1 for value in seq if value > 0)
-    best = max(seq) if seq else 0
-    updated = datetime.now(timezone.utc).strftime("%d %b %Y")
-
-    last30 = seq[-30:]
-    dots = []
-    for i, value in enumerate(last30):
-        color = "#161B22" if value == 0 else "#22D3EE" if value < 6 else "#A5F3FC"
-        dots.append(f'<circle cx="{30 + i * 20}" cy="172" r="4.8" fill="{color}"/>')
-
-    metrics = [
-        (215, 80, "#818CF8", f"{longest:,}", "longest streak"),
-        (445, 80, "#34D399", f"{total:,}", "contributions"),
-        (215, 130, "#F59E0B", f"{active:,}", "active days"),
-        (445, 130, "#22D3EE", f"{best:,}", "best day"),
-    ]
-    metric_svg = []
-    for x, y, color, value, label in metrics:
-        metric_svg.append(
-            f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="22" font-weight="700" fill="{color}">{value}</text>'
-            f'<text x="{x}" y="{y + 15}" font-family="{FONT}" font-size="9.5" fill="#8B949E">{label}</text>'
-        )
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="700" height="200" viewBox="0 0 700 200" role="img" aria-labelledby="title desc">
-  <title id="title">Coding streak</title>
-  <desc id="desc">{current} day current streak, {longest} day longest streak and {total:,} contributions.</desc>
-  <rect x="0.5" y="0.5" width="699" height="199" rx="10" fill="#0D1117" stroke="#30363D"/>
-  <circle cx="30" cy="31" r="3" fill="#F59E0B"/>
-  <text x="41" y="35" font-family="{FONT}" font-size="9.5" letter-spacing="2.2" fill="#8B949E">CODING STREAK</text>
-  <text x="30" y="102" font-family="{FONT}" font-size="52" font-weight="700" fill="#22D3EE">{current}</text>
-  <text x="30" y="123" font-family="{FONT}" font-size="11" fill="#8B949E">day current streak</text>
-  <line x1="190" y1="55" x2="190" y2="145" stroke="#21262D"/>
-  {"".join(metric_svg)}
-  <text x="30" y="152" font-family="{FONT}" font-size="8" letter-spacing="1.7" fill="#6E7681">LAST 30 DAYS</text>
-  {"".join(dots)}
-  <text x="670" y="192" text-anchor="end" font-family="{FONT}" font-size="9" fill="#6E7681">Updated {updated}</text>
-</svg>
-'''
-
 
 def languages_card(rows: list[tuple[str, float]], lang_count: int) -> str:
     colors = {
@@ -310,7 +250,6 @@ if __name__ == "__main__":
         stats_card(data, items, data["contributionsCollection"], days, len(languages_overall)),
         encoding="utf-8",
     )
-    (ASSETS / "streak.svg").write_text(streak_card(days), encoding="utf-8")
     (ASSETS / "languages.svg").write_text(languages_card(rows, len(languages_overall)), encoding="utf-8")
 
     year_total = sum(int(d["contributionCount"]) for d in days)

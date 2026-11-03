@@ -165,15 +165,11 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
 <p align="center"><img src="assets/headers/github-activity.svg" alt="GitHub Activity" width="700" /></p>
 
 <p align="center">
-  <img src="assets/stats.svg" width="700" alt="John Leshan's GitHub activity card" />
+  <img src="assets/stats.svg" width="100%" alt="John Leshan's GitHub activity card" />
 </p>
 
 <p align="center">
-  <img src="assets/streak.svg" width="700" alt="Coding streak card" />
-</p>
-
-<p align="center">
-  <img src="assets/languages.svg" width="700" alt="Top languages by bytes: JavaScript, TypeScript, Python, CSS and HTML" />
+  <img src="assets/languages.svg" width="100%" alt="Top languages by bytes: JavaScript, TypeScript, Python, CSS and HTML" />
 </p>
 
 <p align="center"><sub>Activity cards are generated from the GitHub API. A large share of my recent work lives in private repositories.</sub></p>
