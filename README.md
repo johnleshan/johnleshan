@@ -33,6 +33,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
 
 <p align="center"><img src="assets/headers/tech-stack.svg" alt="Tech Stack" width="700" /></p>
 
+<div align="center">
 <table width="100%">
   <tr>
     <td width="100%">
@@ -88,6 +89,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
 </table>
+</div>
 
 <p align="center"><img src="assets/headers/featured-projects.svg" alt="Featured Projects" width="700" /></p>
 
