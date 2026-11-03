@@ -35,7 +35,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
 
 <table width="100%">
   <tr>
-    <td>
+    <td width="100%">
       <strong>🧬 Languages</strong><br/>
       <img src="https://img.shields.io/badge/TypeScript-161B22?style=flat-square&logo=typescript&logoColor=3178C6" alt="TypeScript" />
       <img src="https://img.shields.io/badge/JavaScript-161B22?style=flat-square&logo=javascript&logoColor=F7DF1E" alt="JavaScript" />
@@ -45,7 +45,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <strong>🎨 Frontend</strong><br/>
       <img src="https://img.shields.io/badge/React-161B22?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
       <img src="https://img.shields.io/badge/Next.js-161B22?style=flat-square&logo=nextdotjs&logoColor=FFFFFF" alt="Next.js" />
@@ -55,7 +55,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <strong>⚙️ Backend & Data</strong><br/>
       <img src="https://img.shields.io/badge/Node.js-161B22?style=flat-square&logo=nodedotjs&logoColor=5FA04E" alt="Node.js" />
       <img src="https://img.shields.io/badge/Express-161B22?style=flat-square&logo=express&logoColor=FFFFFF" alt="Express" />
@@ -66,7 +66,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <strong>🧠 AI & ML</strong><br/>
       <img src="https://img.shields.io/badge/PyTorch-161B22?style=flat-square&logo=pytorch&logoColor=EE4C2C" alt="PyTorch" />
       <img src="https://img.shields.io/badge/Hugging_Face-161B22?style=flat-square&logo=huggingface&logoColor=FFD21E" alt="Hugging Face" />
@@ -77,7 +77,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <strong>🚀 Infrastructure & Automation</strong><br/>
       <img src="https://img.shields.io/badge/Docker-161B22?style=flat-square&logo=docker&logoColor=2496ED" alt="Docker" />
       <img src="https://img.shields.io/badge/Git-161B22?style=flat-square&logo=git&logoColor=F05032" alt="Git" />
@@ -93,7 +93,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
 
 <table width="100%">
   <tr>
-    <td>
+    <td width="100%">
       <h3>🧾 <a href="https://github.com/johnleshan/TrackSimply">TrackSimply</a></h3>
       <p>AI bookkeeping and business analytics for SMEs — transactions, debts, budgets, inventory and fleet in one calm dashboard. The assistant previews every change before it writes.</p>
       <p><sub><b>React · Vite · PostgreSQL · Supabase · Vercel</b></sub></p>
@@ -104,7 +104,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <h3>🔍 <a href="https://github.com/johnleshan/Plagiarism-Detector-Using-Sentence-Transformers">Plagiarism Detector</a></h3>
       <p>Semantic plagiarism detection with sentence embeddings. Catches paraphrasing, not just copy-paste, across 100+ languages — with a desktop GUI and quantitative similarity scores.</p>
       <p><sub><b>Python · Sentence Transformers · PyTorch · Tkinter</b></sub></p>
@@ -114,7 +114,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <h3>📦 <a href="https://github.com/johnleshan/Warehouse-Management">Warehouse Management</a></h3>
       <p>An AI warehouse control tower: inventory, receiving and outbound, worker efficiency, burn-rate reports, reorder points and stockout forecasting.</p>
       <p><sub><b>Next.js · TypeScript · shadcn/ui · Recharts · MongoDB</b></sub></p>
@@ -125,7 +125,7 @@ Two years in, I've shipped across web, mobile and messaging channels. I care abo
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="100%">
       <h3>⚡ <a href="https://github.com/johnleshan/SwiftChat">SwiftChat</a></h3>
       <p>Real-time messaging with AI-generated replies and a focus mode that filters conversation noise. Built for speed, dark mode and mobile from day one.</p>
       <p><sub><b>Next.js · TypeScript · Genkit · Firebase · shadcn/ui</b></sub></p>

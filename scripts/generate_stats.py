@@ -151,13 +151,13 @@ def stats_card(user: dict, items: list[dict], collection: dict, days: list[dict]
   <text x="41" y="35" font-family="{FONT}" font-size="9.5" letter-spacing="2.2" fill="#8B949E">GITHUB AT A GLANCE</text>
   <text x="30" y="102" font-family="{FONT}" font-size="52" font-weight="700" fill="#F0F6FC">{total_year:,}</text>
   <text x="30" y="123" font-family="{FONT}" font-size="11" fill="#8B949E">contributions · last 12 months</text>
-  <line x1="30" y1="142" x2="310" y2="142" stroke="#21262D"/>
+  <text x="30" y="142" font-family="{FONT}" font-size="9" fill="#6E7681">Includes {private_year:,} contributions in private repositories.</text>
+  <line x1="336" y1="58" x2="336" y2="150" stroke="#21262D"/>
   {"".join(metric_svg)}
   <text x="{chart_x}" y="48" font-family="{FONT}" font-size="8.5" letter-spacing="1.8" fill="#8B949E">CONTRIBUTIONS / MONTH</text>
   {"".join(bars)}
   {"".join(labels)}
-  <text x="30" y="181" font-family="{FONT}" font-size="9" fill="#6E7681">Includes {private_year:,} contributions in private repositories.</text>
-  <text x="670" y="181" text-anchor="end" font-family="{FONT}" font-size="9" fill="#6E7681">Updated {updated}</text>
+  <text x="670" y="190" text-anchor="end" font-family="{FONT}" font-size="9" fill="#6E7681">Updated {updated}</text>
 </svg>
 '''
 
@@ -190,7 +190,7 @@ def streak_card(days: list[dict]) -> str:
     dots = []
     for i, value in enumerate(last30):
         color = "#161B22" if value == 0 else "#22D3EE" if value < 6 else "#A5F3FC"
-        dots.append(f'<circle cx="{30 + i * 22}" cy="172" r="5" fill="{color}"/>')
+        dots.append(f'<circle cx="{30 + i * 20}" cy="172" r="4.8" fill="{color}"/>')
 
     metrics = [
         (215, 80, "#818CF8", f"{longest:,}", "longest streak"),
@@ -215,9 +215,9 @@ def streak_card(days: list[dict]) -> str:
   <text x="30" y="123" font-family="{FONT}" font-size="11" fill="#8B949E">day current streak</text>
   <line x1="190" y1="55" x2="190" y2="145" stroke="#21262D"/>
   {"".join(metric_svg)}
-  <text x="30" y="158" font-family="{FONT}" font-size="8" letter-spacing="1.7" fill="#6E7681">LAST 30 DAYS</text>
+  <text x="30" y="152" font-family="{FONT}" font-size="8" letter-spacing="1.7" fill="#6E7681">LAST 30 DAYS</text>
   {"".join(dots)}
-  <text x="670" y="181" text-anchor="end" font-family="{FONT}" font-size="9" fill="#6E7681">Updated {updated}</text>
+  <text x="670" y="192" text-anchor="end" font-family="{FONT}" font-size="9" fill="#6E7681">Updated {updated}</text>
 </svg>
 '''
 
