@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="10" viewBox="0 0 700 10">
+  <defs>
+    <linearGradient id="g_featured-projects" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34D399"/>
+      <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="4" width="700" height="2" rx="1" fill="url(#g_featured-projects)" opacity="0.55"/>
+</svg>
